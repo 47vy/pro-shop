@@ -4,6 +4,7 @@ import userRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import connectDB from './config/db.js';
+import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 const port = process.env.PORT || 5001;
 
@@ -14,6 +15,9 @@ const app = express();
 // Middleware to parse JSON data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware to parse cookies
+app.use(cookieParser());
 
 app.get('/', (req, res) => { 
     res.send('Server is ready');
