@@ -1,4 +1,4 @@
-****Usage****
+# Usage
 
 Create a MongoDB database and obtain your MongoDB URI - MongoDB Atlas
 Create a PayPal account and obtain your Client ID - PayPal Developer
