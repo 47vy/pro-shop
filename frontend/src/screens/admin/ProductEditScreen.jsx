@@ -26,7 +26,6 @@ const ProductEditScreen = () => {
     data: product,
     error,
     isLoading,
-    refetch,
   } = useGetProductDetailsQuery(productId);
 
   const [updateProduct, { isLoading: loadingUpdate }] =
@@ -75,13 +74,13 @@ const ProductEditScreen = () => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     try {
-        const res = await uploadProductImage(formData).unwrap();
-        toast.success(res.message);
-        setImage(res.image);
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
     } catch (err) {
-        toast.error(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
-  }
+  };
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-light my-3">
@@ -131,8 +130,8 @@ const ProductEditScreen = () => {
                 onChange={uploadFileHandler}
                 type="file"
               ></Form.Control>
-              {loadingUpload && <Loader />}
             </Form.Group>
+            {loadingUpload && <Loader />}
 
             <Form.Group controlId="brand" className="my-2">
               <Form.Label>Brand</Form.Label>
